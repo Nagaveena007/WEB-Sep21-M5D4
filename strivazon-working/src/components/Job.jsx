@@ -8,6 +8,7 @@ const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispatch) => ({
   addToFavourites: (favoToAdd) => {
+    
     dispatch(addToFavoAction(favoToAdd));
   },
   removeFromFavourites: (indexToRemove) => {
@@ -35,6 +36,7 @@ const Job = ({ data, addToFavourites, removeFromFavourites }) => {
           <small className="ml-1">Actively recruiting</small>
           <span>
             <BsHeart
+              className="favoritejobs"
               style={{ marginLeft: "10px" }}
               onClick={() => addToFavourites(data)}
             />

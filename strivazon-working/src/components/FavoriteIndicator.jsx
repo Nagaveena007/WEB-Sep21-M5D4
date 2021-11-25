@@ -1,5 +1,5 @@
 import Button from "react-bootstrap/Button";
-import { BsHeart } from "react-icons/bs";
+import { BsHeartFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -12,10 +12,12 @@ const FavoriteIndicator = ({ favoLength }) => {
 
   return (
     <div className="ml-auto mt-2">
-      <Button color="primary" onClick={() => navigate("/favorite")}>
-        <BsHeart style={{ marginLeft: "10px" }} />
-        <span className="ml-2">{favoLength}</span>
-      </Button>
+      <BsHeartFill
+        className="favorite"
+        style={{ marginLeft: "10px", color: "red" }}
+        onClick={() => navigate("/favorite")}
+      />
+      <span className="ml-2">{favoLength}</span>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import Button from "react-bootstrap/Button";
-import { FaTrash } from "react-icons/fa";
+import { BsHeartFill } from "react-icons/bs";
 import { Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { removeFromFavoAction } from "../actions";
@@ -20,10 +20,15 @@ const Favo = ({ favo, removeFromFavo }) => (
       <ul style={{ listStyle: "none" }}>
         {favo.map((job, i) => (
           <li key={i} className="my-4">
-            <Button variant="danger" onClick={() => removeFromFavo(i)}>
-              <FaTrash />
-            </Button>
-            {job.title}
+            {/*             <Button variant="danger" onClick={() => removeFromFavo(i)}>
+             */}{" "}
+            <BsHeartFill
+              className="favorite "
+              style={{ color: "red" }}
+              onClick={() => removeFromFavo(i)}
+            />
+            {/* </Button> */}
+            <span style={{marginLeft:"20px"}}>{job.title}</span>
             {job.company_name}
           </li>
         ))}
