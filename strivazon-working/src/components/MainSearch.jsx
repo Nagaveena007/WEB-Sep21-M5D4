@@ -48,7 +48,7 @@ class MainSearch extends Component {
                     type="search"
                     value={this.state.query}
                     onChange={this.handleChange}
-                    placeholder="type and press Enter"
+                    placeholder="Type and press Enter"
                   />
                 </Col>
                 <Col md={2}>

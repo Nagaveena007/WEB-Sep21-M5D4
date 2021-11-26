@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import { BsHeart } from "react-icons/bs";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
+
 import { connect } from "react-redux";
 import { addToFavoAction, removeFromFavoAction } from "../actions";
 
@@ -8,14 +9,20 @@ const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispatch) => ({
   addToFavourites: (favoToAdd) => {
-    
     dispatch(addToFavoAction(favoToAdd));
   },
   removeFromFavourites: (indexToRemove) => {
     dispatch(removeFromFavoAction(indexToRemove));
   },
 });
-const Job = ({ data, addToFavourites, removeFromFavourites }) => {
+function Job({ data, favo, addToFavourites, removeFromFavourites }) {
+  const favorite = favo.content;
+  const isFav = favorite.includes(data.company_name);
+  const toggleFavourite = () => {
+    isFav
+      ? removeFromFavourites(data.company_name)
+      : addToFavourites(data.company_name);
+  };
   return (
     <Card className="card mt-3 ml-3 mr-3 mb-3">
       <Card.Body>
@@ -35,11 +42,27 @@ const Job = ({ data, addToFavourites, removeFromFavourites }) => {
           <img src="active.png" />
           <small className="ml-1">Actively recruiting</small>
           <span>
-            <BsHeart
+            {isFav ? (
+              <BsHeartFill
+                color="red"
+                size={16}
+                className="favoritejobs"
+                onClick={toggleFavourite}
+              />
+            ) : (
+              <BsHeart
+                color="red"
+                size={16}
+                className=" favoritejobs"
+                onClick={toggleFavourite}
+              />
+            )}
+
+            {/*  <BsHeart
               className="favoritejobs"
               style={{ marginLeft: "10px" }}
               onClick={() => addToFavourites(data)}
-            />
+            /> */}
           </span>
         </Card.Text>
 
@@ -47,6 +70,6 @@ const Job = ({ data, addToFavourites, removeFromFavourites }) => {
       </Card.Body>
     </Card>
   );
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Job);

@@ -12,12 +12,15 @@ const FavoriteIndicator = ({ favoLength }) => {
 
   return (
     <div className="ml-auto mt-2">
-      <BsHeartFill
-        className="favorite"
-        style={{ marginLeft: "10px", color: "red" }}
-        onClick={() => navigate("/favorite")}
-      />
-      <span className="ml-2">{favoLength}</span>
+      <Button variant="light" onClick={() => navigate("/favorite")}>
+        <span className="ml-2">Favourites</span>
+        <BsHeartFill
+          className=""
+          style={{ marginLeft: "10px", color: "red" }}
+        />
+        {/*         <span className="ml-2">{favoLength}</span>
+         */}{" "}
+      </Button>
     </div>
   );
 };
